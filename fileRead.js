@@ -24,13 +24,25 @@ function readFileCustom(filename) {
 //         });
 //     });
 // });
+var value = 1;
 readFileCustom('file1.txt')
     .then(val1 => {
-        console.log(val1);
+        value *= val1;
         return readFileCustom('file2.txt');
     })
     .then(val2 => {
-        console.log(val2);
+        value *= val2;
         return readFileCustom('file3.txt');
     })
-    .then(val3 => console.log(val3));
+    .then(val3 => {
+        value *= val3;
+        return readFileCustom('file4.txt');
+    })
+    .then(val4 => {
+        value *= val4;
+        return readFileCustom('file5.txt');
+    })
+    .then(val5 => {
+        value *= val5;
+        console.log(value);
+    });
